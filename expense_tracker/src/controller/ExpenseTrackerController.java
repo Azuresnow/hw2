@@ -36,19 +36,28 @@ public class ExpenseTrackerController {
 
   }
 
-  public void filter() {
+  public boolean filter() {
 
 
     double amount = view.getAmountField();
     String category = view.getCategoryField();
 
+    if (!InputValidation.isValidAmount(amount)) {
+      return false;
+    }
+    if (!InputValidation.isValidCategory(category)) {
+      return false;
+    }
+
     List<Transaction> filteredTransactions = model.getFiltedTransactions(amount, category);
 
     view.refreshTable(filteredTransactions);
+
+    return true;
 }
 
 
-  public boolean addTransaction(double amount, String category) {
+public boolean addTransaction(double amount, String category) {
     if (!InputValidation.isValidAmount(amount)) {
       return false;
     }

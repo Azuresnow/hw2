@@ -2,6 +2,15 @@
 
 The homework will be based on this project named "Expense Tracker",where users will be able to add/remove daily transaction. 
 
+# hw2- Implementation & Testing
+
+Fuctionality:
+
+Added filtering function, users can use the input fields to filter by amount or category or both. (Input validation on filtering)
+Added reset function, users can view the original list by pressing the reset filter button. 
+
+
+
 ## Compile
 
 To compile the code from terminal, use the following command:
