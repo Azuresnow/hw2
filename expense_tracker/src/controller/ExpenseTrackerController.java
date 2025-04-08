@@ -1,13 +1,9 @@
 package controller;
 
-import view.ExpenseTrackerView;
-
 import java.util.List;
-
-
-
 import model.ExpenseTrackerModel;
 import model.Transaction;
+import view.ExpenseTrackerView;
 public class ExpenseTrackerController {
   
   private ExpenseTrackerModel model;
@@ -29,6 +25,28 @@ public class ExpenseTrackerController {
     view.refreshTable(transactions);
 
   }
+
+  public void reset() {
+
+    // Get transactions from model
+    List<Transaction> transactions = model.getAllTransactions();
+
+    // Pass to view
+    view.refreshTable(transactions);
+
+  }
+
+  public void filter() {
+
+
+    double amount = view.getAmountField();
+    String category = view.getCategoryField();
+
+    List<Transaction> filteredTransactions = model.getFiltedTransactions(amount, category);
+
+    view.refreshTable(filteredTransactions);
+}
+
 
   public boolean addTransaction(double amount, String category) {
     if (!InputValidation.isValidAmount(amount)) {

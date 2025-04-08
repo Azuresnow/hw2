@@ -1,13 +1,9 @@
-import javax.swing.JOptionPane;
-import javax.swing.table.DefaultTableModel;
-
 import controller.ExpenseTrackerController;
+import javax.swing.JOptionPane;
 import model.ExpenseTrackerModel;
 import view.ExpenseTrackerView;
-import model.Transaction;
-import controller.InputValidation;
 
-public class ExpenseTrackerApp {
+public class ExpenseTrackerApp{
 
   public static void main(String[] args) {
     
@@ -18,6 +14,19 @@ public class ExpenseTrackerApp {
 
     // Initialize view
     view.setVisible(true);
+
+    view.getFilterBtn().addActionListener(e -> {
+
+      controller.filter();
+      
+    });
+
+    
+    view.getResetBtn().addActionListener(e -> {
+
+      controller.reset();
+      
+    });
 
     // Handle add transaction button clicks
     view.getAddTransactionBtn().addActionListener(e -> {

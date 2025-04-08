@@ -1,21 +1,18 @@
 package view;
 
-import javax.swing.*;
-import javax.swing.JFormattedTextField.AbstractFormatterFactory;
-import javax.swing.table.DefaultTableModel;
-
-import controller.InputValidation;
-
 import java.awt.*;
 import java.text.NumberFormat;
-
-import model.Transaction;
 import java.util.List;
+import javax.swing.*;
+import javax.swing.table.DefaultTableModel;
+import model.Transaction;
 
 public class ExpenseTrackerView extends JFrame {
 
   private JTable transactionsTable;
   private JButton addTransactionBtn;
+  private JButton addFilterBtn;
+  private JButton addRestBtn;
   private JFormattedTextField amountField;
   private JTextField categoryField;
   private DefaultTableModel model;
@@ -29,6 +26,8 @@ public class ExpenseTrackerView extends JFrame {
     this.model = new DefaultTableModel(columnNames, 0);
 
     addTransactionBtn = new JButton("Add Transaction");
+    addFilterBtn = new JButton("Filter");
+    addRestBtn = new JButton("Reset filter");
 
     // Create UI components
     JLabel amountLabel = new JLabel("Amount:");
@@ -51,9 +50,14 @@ public class ExpenseTrackerView extends JFrame {
     inputPanel.add(categoryLabel); 
     inputPanel.add(categoryField);
     inputPanel.add(addTransactionBtn);
+    inputPanel.add(addFilterBtn);
+    inputPanel.add(addRestBtn);
+
   
     JPanel buttonPanel = new JPanel();
     buttonPanel.add(addTransactionBtn);
+    buttonPanel.add(addFilterBtn);
+    buttonPanel.add(addRestBtn);
   
     // Add panels to frame
     add(inputPanel, BorderLayout.NORTH);
@@ -95,6 +99,12 @@ public class ExpenseTrackerView extends JFrame {
   
   public JButton getAddTransactionBtn() {
     return addTransactionBtn;
+  }
+  public JButton getFilterBtn() {
+    return addFilterBtn;
+  }
+  public JButton getResetBtn() {
+    return addRestBtn;
   }
   public DefaultTableModel getTableModel() {
     return model;
