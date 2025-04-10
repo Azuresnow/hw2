@@ -28,14 +28,22 @@ public class ExpenseTrackerApp{
       
     });
 
+    view.getRemoveBtn().addActionListener(e -> {
+
+      controller.remove();
+
+    });
+
     // Handle add transaction button clicks
     view.getAddTransactionBtn().addActionListener(e -> {
       // Get transaction data from view
       double amount = view.getAmountField();
       String category = view.getCategoryField();
+      boolean isSelected  = view.getSelection();
+
       
       // Call controller to add transaction
-      boolean added = controller.addTransaction(amount, category);
+      boolean added = controller.addTransaction(amount, category, isSelected);
       
       if (!added) {
         JOptionPane.showMessageDialog(view, "Invalid amount or category entered");

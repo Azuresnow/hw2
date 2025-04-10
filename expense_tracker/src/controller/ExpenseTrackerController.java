@@ -56,8 +56,15 @@ public class ExpenseTrackerController {
     return true;
 }
 
+public void remove(){
+  boolean getSelection = view.getSelection();
+  List<Transaction> removeTransactions = model.removeTransaction(getSelection);
+  view.refreshTable(removeTransactions);
 
-public boolean addTransaction(double amount, String category) {
+}
+
+
+public boolean addTransaction(double amount, String category, boolean isSelected) {
     if (!InputValidation.isValidAmount(amount)) {
       return false;
     }
@@ -65,11 +72,12 @@ public boolean addTransaction(double amount, String category) {
       return false;
     }
     
-    Transaction t = new Transaction(amount, category);
+    Transaction t = new Transaction(amount, category, isSelected);
     model.addTransaction(t);
-    view.getTableModel().addRow(new Object[]{t.getAmount(), t.getCategory(), t.getTimestamp()});
+    view.getTableModel().addRow(new Object[]{t.getAmount(), t.getCategory(), t.getTimestamp(), t.getSelection()});
     refresh();
     return true;
+
   }
   
   // Other controller methods

@@ -2,17 +2,18 @@ package model;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
-import java.util.List;
 
 public class Transaction {
 
   public double amount;
   public String category;
   public String timestamp;
+  public boolean isSelected;
 
-  public Transaction(double amount, String category) {
+  public Transaction(double amount, String category, boolean isSelected) {
     this.amount = amount;
     this.category = category;
+    this.isSelected = isSelected;
     this.timestamp = generateTimestamp();
   }
 
@@ -35,6 +36,15 @@ public class Transaction {
   public String getTimestamp() {
     return timestamp;
   }
+
+  public boolean getSelection() {
+    return isSelected;
+  }
+
+  public void setSelection(boolean isSelected) {
+    this.isSelected = isSelected;
+  }
+
 
   private String generateTimestamp() {
     SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy HH:mm");  
