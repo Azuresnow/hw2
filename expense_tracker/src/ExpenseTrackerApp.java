@@ -17,7 +17,7 @@ public class ExpenseTrackerApp{
 
     view.getFilterBtn().addActionListener(e -> {
 
-      controller.filter();
+      controller.filter(view.getAmountField(), view.getCategoryField());
       
     });
 

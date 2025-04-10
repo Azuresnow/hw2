@@ -139,11 +139,6 @@ public class ExpenseTrackerView extends JFrame {
     return amount;
     }
   }
-
-  public void setAmountField(JFormattedTextField amountField) {
-    this.amountField = amountField;
-  }
-
   
   public String getCategoryField() {
     return categoryField.getText();
@@ -160,7 +155,4 @@ public class ExpenseTrackerView extends JFrame {
     this.selectField = selectField;
 }
 
-  public void setCategoryField(JTextField categoryField) {
-    this.categoryField = categoryField;
-  }
 }

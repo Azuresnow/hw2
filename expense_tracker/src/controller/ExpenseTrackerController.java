@@ -36,11 +36,8 @@ public class ExpenseTrackerController {
 
   }
 
-  public boolean filter() {
+  public boolean filter(double amount, String category) {
 
-
-    double amount = view.getAmountField();
-    String category = view.getCategoryField();
 
     if (!InputValidation.isValidAmount(amount)) {
       return false;
